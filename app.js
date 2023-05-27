@@ -34,6 +34,59 @@ process.stdin.on("readable", function(){
     }
 });
 
+app.set("views", path.resolve(__dirname, "./"));
+
+app.set("view engine", "ejs");
+const statusCode = 200;
+
+/* Initializes request.body with post information */
+app.use(bodyParser.urlencoded({extended:false}));
+
+app.get("/", (request, response) => {
+    response.render("index");
+});
+
+
+app.get("/weather", (request, response) =>{
+    const variables = {httpURL: `http://localhost:${portNum}/weather`}
+    response.render("weather", variables);
+});
+
+app.post("/weather", async (request, response) => {
+    const {city} = request.body;
+
+    apiKey = "aae9691330278bb23497a702fe05bc37";
+    let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+    fetch(
+        // "https://api.openweathermap.org/data/2.5/weather?q="
+        // + city
+        // + "&units=metric&appid="
+        // + this.apiKey
+        apiLink
+    )
+    .then((response) => {
+        console.log("API Link: " + apiLink);
+        if(!response.ok) {
+            throw new Error("No weather found.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        const {temp} = data.main;
+        const variables = {
+            city: city,
+            temp: temp
+        }
+        // const { temp, humidity } = data.main;
+        // console.log(`temp is: ${temp}`);
+        response.render("searchResults", variables);
+
+    });
+    
+
+});
+
+
 
 app.listen(portNum);
 

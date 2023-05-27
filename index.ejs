@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather Site</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+
+    <style>
+        html{
+            font-size: 14px;
+        }       
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 2rem;
+            
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://source.unsplash.com/1920x1080/?landscape');
+        }
+        
+        .card {
+            background: #000000d0;
+            opacity: 89%;
+
+            color: white;
+            padding: 2em;
+            border-radius: 30px;
+
+            width: 100%;
+            max-width: 35rem;
+            margin: 4rem;
+        }
+
+
+        /*For search box*/
+        input.searchArea {
+
+            /*Prevent outline from displaying when clicked on text area */
+            outline: none;
+            border: none;
+            border-radius: 25px;
+
+            padding: 0.4em 1em;
+            background: #7c7c7c2b;
+            color: white;
+            font-size: 105%;
+            width: calc(100% - 55px);
+        }
+
+        input.button{
+            width: calc(50%);
+            margin: 0.5rem;
+            border-radius: 10px;
+            outline: none;
+            height: 2rem;
+            width: 10rem;
+            opacity: 60%;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        hi there
+        <a href="/weather">Weather</a>
+    </div>
+
+
+</body>
+
+
+
+</html>
