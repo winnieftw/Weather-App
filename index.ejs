@@ -21,47 +21,64 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://source.unsplash.com/1920x1080/?landscape');
+            width: 100vw;
+            background-image: url('https://source.unsplash.com/2560x1440/?landscape');
         }
         
         .card {
             background: #000000d0;
-            opacity: 89%;
+            opacity: 70%;
 
             color: white;
             padding: 2em;
             border-radius: 30px;
 
-            width: 100%;
-            max-width: 35rem;
-            margin: 4rem;
+            width: 20%;
+            max-width: 30rem;
+            margin: 2rem;
+
+            position: fixed;
         }
 
 
-        /*For search box*/
-        input.searchArea {
-
-            /*Prevent outline from displaying when clicked on text area */
+        .buttons{
+            /* width: calc(50%); */
+            /* height: 4rem; */
+            /* position: fixed; */
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .task-button{
             outline: none;
             border: none;
-            border-radius: 25px;
-
-            padding: 0.4em 1em;
-            background: #7c7c7c2b;
-            color: white;
-            font-size: 105%;
-            width: calc(100% - 55px);
+            opacity: 90%;
+            border-radius: 20px;
+            height: 4rem;
+            width: 10rem;
+            background-color: white;
         }
 
-        input.button{
-            width: calc(50%);
-            margin: 0.5rem;
-            border-radius: 10px;
-            outline: none;
-            height: 2rem;
-            width: 10rem;
-            opacity: 60%;
+        .task-button:hover{
+            background-color:antiquewhite;
+        }
 
+
+        /* Load Page Animation */
+        .card {
+            animation: transitionIn .80s;
+        }
+
+        @keyframes transitionIn {
+            from {
+                opacity: 0;
+                transform: rotateX(-10deg);
+            }
+
+            to {
+                opacity: 70%;
+                transform: rotateX(0);
+            }
         }
 
     </style>
@@ -71,9 +88,14 @@
 <body>
 
     <div class="card">
-
-        hi there
-        <a href="/weather">Weather</a>
+        <!-- <a href="/weather">Weather</a> -->
+        <h2>Weather Service</h2>
+        <div class="buttons">
+            <button onclick="window.location.href= '/weather';" class="task-button">
+                Search Weather
+            </button>
+            <input type="button" value="History" name="history" class="task-button">
+        </div>
     </div>
 
 

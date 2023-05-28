@@ -29,8 +29,26 @@
 <body>
     <div id="innerBody">
         <form>
+
+            <!--
+            city: city,
+            temp: temp,
+            feels_like: feels_like,
+            temp_max: temp_max,
+            temp_min: temp_min,
+            speed: speed,
+            description: description
+            -->
+
             <h1>Weather in <%- city %></h1>
-            Temp is: <%- temp %>
+            Temperature: <%- temp %> &deg;F<br>
+            Feels Like: <%- feels_like %> &deg;F<br>
+            Max Temperature: <%- temp_max %> &deg;F<br>
+            Min Temperature: <%- temp_min %> &deg;F<br>
+            Wind Speeds: <%- speed %> MPH<br>
+            Description: <%- description %> <br>
+
+
             <a href="/">Home</a>
         </form>
     </div>
