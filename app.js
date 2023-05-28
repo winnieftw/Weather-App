@@ -56,7 +56,7 @@ app.post("/weather", async (request, response) => {
     const {city} = request.body;
 
     apiKey = "aae9691330278bb23497a702fe05bc37";
-    let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+    let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
     fetch(
         // "https://api.openweathermap.org/data/2.5/weather?q="
         // + city
@@ -72,10 +72,18 @@ app.post("/weather", async (request, response) => {
         return response.json();
     })
     .then(data => {
-        const {temp} = data.main;
+        const {temp, feels_like, temp_min, temp_max} = data.main;
+        const {speed} = data.wind;
+        const {description} = data.weather[0];
+
         const variables = {
             city: city,
-            temp: temp
+            temp: temp,
+            feels_like: feels_like,
+            temp_max: temp_max,
+            temp_min: temp_min,
+            speed: speed,
+            description: description
         }
         // const { temp, humidity } = data.main;
         // console.log(`temp is: ${temp}`);
