@@ -65,7 +65,7 @@ app.post("/weather", async (request, response) => {
         apiLink
     )
     .then((response) => {
-        console.log("API Link: " + apiLink);
+        // console.log("API Link: " + apiLink);
         if(!response.ok) {
             throw new Error("No weather found.");
         }
