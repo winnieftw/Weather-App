@@ -74,8 +74,9 @@ app.post("/weather", async (request, response) => {
     .then(data => {
         const {temp, feels_like, temp_min, temp_max} = data.main;
         const {speed} = data.wind;
-        const {description} = data.weather[0];
+        const {description, icon} = data.weather[0];
 
+        let imageIcon = "https://openweathermap.org/img/wn/" + icon + ".png";
         const variables = {
             city: city,
             temp: temp,
@@ -83,7 +84,8 @@ app.post("/weather", async (request, response) => {
             temp_max: temp_max,
             temp_min: temp_min,
             speed: speed,
-            description: description
+            description: description,
+            icon: imageIcon
         }
         // const { temp, humidity } = data.main;
         // console.log(`temp is: ${temp}`);

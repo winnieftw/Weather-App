@@ -15,13 +15,22 @@
         body {
             font-family: 'Open Sans', sans-serif;
             font-size: 2rem;
-            
+            margin: 0;  /* Prevents Scroll Bar From showing if not needed*/
+
             
             display: flex;
-            justify-content: center;
+            /* 
+                justify-content and align-items are a part of flex
+                justify-content is along the main axis(y-axxis)
+                align-items is along the cross axis(x-axis)
+
+                methods for them:
+                - flex-start, flex-end, center, space-between, space-around, space-evenly
+                */
+            justify-content: center; 
             align-items: center;
-            height: 100vh;
-            width: 100vw;
+            height: 100vh;  /* x-coord */
+            width: 100vw;   /* y-coord */
             background-image: url('https://source.unsplash.com/2560x1440/?landscape');
         }
         
