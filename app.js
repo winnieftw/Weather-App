@@ -42,14 +42,22 @@ const statusCode = 200;
 /* Initializes request.body with post information */
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get("/", (request, response) => {
-    response.render("index");
+app.get("/", (request, response) =>{
+
+    const variables = {httpURL: `http://localhost:${portNum}/weather`};
+    response.render("weather", variables);
+    // response.render("index");
 });
 
+// app.get("/weather", (request, response) => {
+//     const variables = {httpURL: `http://localhost:${portNum}/weather`};
+//     response.render("weather", variables);
+// });
 
-app.get("/weather", (request, response) =>{
-    const variables = {httpURL: `http://localhost:${portNum}/weather`}
-    response.render("weather", variables);
+app.get('/history', (request, response) => {
+    // const variables = {httpURL: `http://localhost:${portNum}/history`};
+    // response.render("history", variables);
+    response.render("history");
 });
 
 app.post("/weather", async (request, response) => {
@@ -58,10 +66,6 @@ app.post("/weather", async (request, response) => {
     apiKey = "aae9691330278bb23497a702fe05bc37";
     let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
     fetch(
-        // "https://api.openweathermap.org/data/2.5/weather?q="
-        // + city
-        // + "&units=metric&appid="
-        // + this.apiKey
         apiLink
     )
     .then((response) => {
@@ -87,11 +91,11 @@ app.post("/weather", async (request, response) => {
             description: description,
             icon: imageIcon
         }
-        // const { temp, humidity } = data.main;
-        // console.log(`temp is: ${temp}`);
         response.render("searchResults", variables);
 
     });
+
+
     
 
 });
