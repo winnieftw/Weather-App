@@ -49,10 +49,10 @@ app.get("/", (request, response) =>{
     // response.render("index");
 });
 
-// app.get("/weather", (request, response) => {
-//     const variables = {httpURL: `http://localhost:${portNum}/weather`};
-//     response.render("weather", variables);
-// });
+app.get("/weather", (request, response) => {
+    const variables = {httpURL: `http://localhost:${portNum}/weather`};
+    response.render("weather", variables);
+});
 
 app.get('/history', (request, response) => {
     // const variables = {httpURL: `http://localhost:${portNum}/history`};
@@ -94,9 +94,6 @@ app.post("/weather", async (request, response) => {
         response.render("searchResults", variables);
 
     });
-
-
-    
 
 });
 
