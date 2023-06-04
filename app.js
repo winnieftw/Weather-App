@@ -34,6 +34,20 @@ process.stdin.on("readable", function(){
     }
 });
 
+
+/*
+    Mongo Setup
+*/
+const databaseAndCollection = {db: "WeatherApp", collection: "searchHistory"};
+const {MongoClient, ServerApiVersion} = require('mongodb');
+const uri = `mongodb+srv://tanwinston217:abcde@cluster0.idenr0n.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+
+/*
+    Server Side
+*/
 app.set("views", path.resolve(__dirname, "./"));
 
 app.set("view engine", "ejs");
@@ -54,10 +68,30 @@ app.get("/weather", (request, response) => {
     response.render("weather", variables);
 });
 
-app.get('/history', (request, response) => {
-    // const variables = {httpURL: `http://localhost:${portNum}/history`};
-    // response.render("history", variables);
-    response.render("history");
+app.get('/history', async (request, response) => {
+    let arr = await retrieveSearches(client, databaseAndCollection);
+    
+    // console.log("array lengthhhhh: "+ arr.length + "\n\n");
+    //Store html string
+    let weatherCard = "";
+
+    
+    //If there is search history, display cities
+    if(arr.length > 0) {
+        //iterate through search history
+        for(let element of arr) {
+            weatherCard += '<div class="card">';
+            weatherCard += element.city;
+            weatherCard += '</div>';
+        }
+    } else {
+        weatherCard = '<div class="card">';
+        weatherCard += "No Searches"
+        weatherCard += '</div>';
+    }
+
+    // console.log("Weather Cards: " + weatherCard + "\n\n");
+    response.render("history", {weatherCard});
 });
 
 app.post("/weather", async (request, response) => {
@@ -91,15 +125,52 @@ app.post("/weather", async (request, response) => {
             description: description,
             icon: imageIcon
         }
+
+        //adding into mongo database
+        addData(variables);
+        //rendering results page
         response.render("searchResults", variables);
 
     });
 
 });
 
+//Add info into search history database
+async function addData(info){
+    try{
+        await client.connect();
+        await insertInfo(client, databaseAndCollection, info);
+    } catch(e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+}
 
+async function insertInfo(client, databaseAndCollection, info){
+    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(info);
+}
 
 app.listen(portNum);
 
 
+
+//Retrieve Search History
+async function retrieveSearches(client, databaseAndCollection){
+    try{
+        await client.connect();
+        let filter = {};
+        const cursor = client.db(databaseAndCollection.db)
+        .collection(databaseAndCollection.collection)
+        .find(filter);
+
+        // console.log("CURRSORRRR: " + cursor +"\n\n");
+        const result = await cursor.toArray();
+        return result;
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+}
 
