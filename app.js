@@ -80,8 +80,16 @@ app.get('/history', async (request, response) => {
     if(arr.length > 0) {
         //iterate through search history
         for(let element of arr) {
+            let imageIcon = "https://openweathermap.org/img/wn/" + element.icon + ".png";
             weatherCard += '<div class="card">';
-            weatherCard += element.city;
+            // weatherCard += element.city;
+            weatherCard += '<h2>' + element.city + '</h2>';
+            weatherCard += '<img src="' + imageIcon + '" alt="Weather Icon"><br>';
+            // weatherCard += '<p class="innerCard>';
+            weatherCard += "Description: " + element.description + "<br>";
+            weatherCard += 'H: ' + element.temp_max + '&deg;F&nbsp;';
+            weatherCard += 'L: ' + element.temp_min + '&deg;F';
+            // weatherCard += '</p>';
             weatherCard += '</div>';
         }
     } else {
@@ -123,7 +131,8 @@ app.post("/weather", async (request, response) => {
             temp_min: temp_min,
             speed: speed,
             description: description,
-            icon: imageIcon
+            icon: icon,
+            imageIcon: imageIcon
         }
 
         //adding into mongo database
@@ -148,7 +157,9 @@ async function addData(info){
 }
 
 async function insertInfo(client, databaseAndCollection, info){
-    const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(info);
+    const result = await client.db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection)
+    .insertOne(info);
 }
 
 app.listen(portNum);

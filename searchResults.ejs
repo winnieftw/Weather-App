@@ -55,6 +55,7 @@
             margin: 2rem;
 
             position: fixed;
+            text-align: center;
         }
 
         img{
@@ -106,14 +107,15 @@
             description: description
             -->
 
-            <h1>Weather in <br><em><%- city %></em></h1>
+            <h1><%- city %></h1>
             <!-- Temperature: <%- temp %> &deg;F<br> -->
             <h2><%- temp %>&deg;F</h2>
-            <img src="<%- icon %>" alt="Weather Icon"><br>
-            Description: <%- description %> <br><br>
+            <img src="<%- imageIcon %>" alt="Weather Icon"><br>
+            Description: <%- description %> <br>
+            H: <%- temp_max %> &deg;F&nbsp;
+            L: <%- temp_min %> &deg;F<br><br>
+            
             Feels Like: <%- feels_like %> &deg;F<br>
-            Max Temperature: <%- temp_max %> &deg;F<br>
-            Min Temperature: <%- temp_min %> &deg;F<br>
             Wind Speeds: <%- speed %> MPH<br>
 
             <!-- <h2>Weather In <br>Los Angelos</h2>
