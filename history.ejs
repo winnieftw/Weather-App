@@ -9,10 +9,11 @@
     <style>
         html{
             font-size: 14px;
+            scroll-behavior: smooth;
         }       
         
         body {
-            background-image: url('https://source.unsplash.com/1600x900/?landscape');
+            background-image: url('https://source.unsplash.com/1920x1080/?landscape');
             background-attachment: fixed;
             
             padding-top: 2rem;
@@ -20,6 +21,7 @@
             font-size: 2rem;
             
             display: flex;
+            /* flex: 1; */
             flex-direction: column;
             align-items: center;
 
@@ -34,7 +36,9 @@
             /* margin: 2rem; */
             text-align: center;
         }
-        
+
+
+
         .card {
             background: #000000d0;
             opacity: 80%;
@@ -43,23 +47,23 @@
             padding: 2em;
             border-radius: 30px;
 
-            max-width: 60rem;
-            width: 50%;
+            width: 40rem;
             margin: 2rem;
-            text-align: center;
             font-size: 1.5rem;
+
+            /* display: flex; */
+            /* justify-content: center; */
+            text-align: center;
             /* position: fixed; */
         }
-
-        /* .innerCard{
-            font-size: 1.5rem;
-        } */
 
         img{
             width: 6rem;
         }
-        /* Load Page Animation */
-        /* .card {
+        /* 
+            Load Page Animation 
+        */
+        .card {
             animation: transitionIn .80s;
         }
 
@@ -70,12 +74,10 @@
             }
 
             to {
-                opacity: 70%;
+                opacity: 80%;
                 transform: rotateX(0);
             }
-        } */
-
-
+        }
 
         /*
             For Search Button 
@@ -98,9 +100,8 @@
         /*Display the search button*/
         footer{
             padding-top: 2rem;
-            display: flex;
-            /*Center search button along the center of x-axis(main axis) */
-            justify-content:center; 
+            text-align: center;
+            opacity: 100%;
         }
 
     </style>
@@ -108,59 +109,70 @@
 </head>
 
 <body>
-
-    <div>
-        <!-- <a href="/weather">Weather</a> -->
-        <header>
-            <h2>History</h2>
-            <button>
-                <a href="/">
-                    <svg viewBox="0 0 24 24" fill="currentColor" height="2em" width="2em" type="submit" >
-                    <path d="M15.5 12c2.5 0 4.5 2 4.5 4.5 0 .88-.25 1.71-.69 2.4l3.08 3.1L21 23.39l-3.12-3.07c-.69.43-1.51.68-2.38.68-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 00-2.5 2.5 2.5 2.5 0 002.5 2.5 2.5 2.5 0 002.5-2.5 2.5 2.5 0 00-2.5-2.5m3.85-5.97C21.95 8.22 24 10.36 24 13c0 1.64-.79 3.1-2 4v-.5a6.5 6.5 0 00-6.5-6.5A6.5 6.5 0 009 16.5c0 .5.06 1 .17 1.5H6a6 6 0 01-6-6c0-3.1 2.34-5.64 5.35-5.97A7.506 7.506 0 0112 2a7.49 7.49 0 017.35 6.03z" />
-                    </svg>
-                </a>
-            </button>
-        </header>
-        <main>
-            <!-- <div class="card">
-                <h2>
-                    Los Angeles
-                </h2>
-                <img src="https://openweathermap.org/img/wn/01d.png"><br>
-                    Description: Partly Cloudy<br>
-                    H: 72&deg;F
-                    L: 69&deg;F
-            </div> -->
-            <!-- <div class="card">
-                Boyds
-            </div> -->
-            <!-- <div class="card">
-                Los Angelos
-            </div> -->
-            <!-- <div class="card">
-                Germantown4
-            </div> -->
-            <!-- <div class="card">
-                Germantown5
-            </div> -->
-            <!-- <div class="card">
-                Germantown6
-            </div> -->
-            <%- weatherCard %>
-        </main>
-        <!-- <footer>
-            <button>
-                <a href="/">
-                    <svg viewBox="0 0 24 24" fill="currentColor" height="2em" width="2em" type="submit" >
-                    <path d="M15.5 12c2.5 0 4.5 2 4.5 4.5 0 .88-.25 1.71-.69 2.4l3.08 3.1L21 23.39l-3.12-3.07c-.69.43-1.51.68-2.38.68-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 00-2.5 2.5 2.5 2.5 0 002.5 2.5 2.5 2.5 0 002.5-2.5 2.5 2.5 0 00-2.5-2.5m3.85-5.97C21.95 8.22 24 10.36 24 13c0 1.64-.79 3.1-2 4v-.5a6.5 6.5 0 00-6.5-6.5A6.5 6.5 0 009 16.5c0 .5.06 1 .17 1.5H6a6 6 0 01-6-6c0-3.1 2.34-5.64 5.35-5.97A7.506 7.506 0 0112 2a7.49 7.49 0 017.35 6.03z" />
-                    </svg>
-                </a>
-            </button>
-        </footer> -->
-
-    </div>
-
-
+    <!-- <a href="/weather">Weather</a> -->
+    <header>
+        <h2>History</h2>
+        <button>
+            <a href="/">
+                <svg viewBox="0 0 24 24" fill="currentColor" height="2em" width="2em" type="submit" >
+                <path d="M15.5 12c2.5 0 4.5 2 4.5 4.5 0 .88-.25 1.71-.69 2.4l3.08 3.1L21 23.39l-3.12-3.07c-.69.43-1.51.68-2.38.68-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 00-2.5 2.5 2.5 2.5 0 002.5 2.5 2.5 2.5 0 002.5-2.5 2.5 2.5 0 00-2.5-2.5m3.85-5.97C21.95 8.22 24 10.36 24 13c0 1.64-.79 3.1-2 4v-.5a6.5 6.5 0 00-6.5-6.5A6.5 6.5 0 009 16.5c0 .5.06 1 .17 1.5H6a6 6 0 01-6-6c0-3.1 2.34-5.64 5.35-5.97A7.506 7.506 0 0112 2a7.49 7.49 0 017.35 6.03z" />
+                </svg>
+            </a>
+        </button>
+    </header>
+    <main>
+        <!-- <div class="card">
+            <h2>
+                Los Angeles
+            </h2>
+            <img src="https://openweathermap.org/img/wn/01d.png"><br>
+                Description: Partly Cloudy<br>
+                H: 72&deg;F
+                L: 69&deg;F
+        </div> -->
+        <!-- <div class="card">
+            <h2>
+                Los Angeles
+            </h2>
+            <img src="https://openweathermap.org/img/wn/01d.png"><br>
+                Description: Partly Cloudy<br>
+                H: 72&deg;F
+                L: 69&deg;F
+        </div> -->
+        <!-- <div class="card">
+            Boyds
+        </div> -->
+        <!-- <div class="card">
+            Los Angelos
+        </div> -->
+        <!-- <div class="card">
+            Germantown4
+        </div> -->
+        <!-- <div class="card">
+            Germantown5
+        </div> -->
+        <!-- <div class="card">
+            Germantown6
+        </div> -->
+        <%- weatherCard %>
+    </main>
+    
+    <footer>
+        <button type="button">
+            <a href="#">
+                <?xml version="1.0" ?>
+                    <svg height="21px" version="1.1" viewBox="0 0 20 21" width="20px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                            <g fill="#000000" id="Core" opacity="0.9" transform="translate(-464.000000, -254.000000)">
+                                <g id="history" transform="translate(464.000000, 254.500000)">
+                                <path d="M10.5,0 C7,0 3.9,1.9 2.3,4.8 L0,2.5 L0,9 L6.5,9 L3.7,6.2 C5,3.7 7.5,2 10.5,2 C14.6,2 18,5.4 18,9.5 C18,13.6 14.6,17 10.5,17 C7.2,17 4.5,14.9 3.4,12 L1.3,12 C2.4,16 6.1,19 10.5,19 C15.8,19 20,14.7 20,9.5 C20,4.3 15.7,0 10.5,0 L10.5,0 Z M9,5 L9,10.1 L13.7,12.9 L14.5,11.6 L10.5,9.2 L10.5,5 L9,5 L9,5 Z" id="Shape"/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </a>
+        </button>
+    </footer>
 </body>
 
 
