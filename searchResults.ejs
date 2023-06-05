@@ -34,7 +34,7 @@
             align-items: center;
             height: 100vh;  /* x-coord */
             /* width: 100vw;   y-coord */
-            background-image: url('https://source.unsplash.com/2560x1440/?landscape');
+            background-image: url('https://source.unsplash.com/1920x1080/?landscape');
             background-attachment: fixed;            
         }
 
@@ -44,7 +44,7 @@
 
         .card {
             background: #000000d0;
-            opacity: 70%;
+            opacity: 80%;
 
             color: white;
             padding: 3em;
@@ -89,6 +89,24 @@
             justify-content:center; 
         }
 
+        /* 
+            Load Page Animation 
+        */
+        .card {
+            animation: transitionIn .80s;
+        }
+
+        @keyframes transitionIn {
+            from {
+                opacity: 0;
+                transform: rotateX(-10deg);
+            }
+
+            to {
+                opacity: 80%;
+                transform: rotateX(0);
+            }
+        }
 
     </style>
 </head>
