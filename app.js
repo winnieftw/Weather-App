@@ -1,9 +1,10 @@
-//import libraries
+// Import libraries
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const http = require("http");
 
+// Express Setup
 const app = express();
 const bodyParser = require("body-parser");
 let portNum = 5000;
@@ -17,6 +18,7 @@ console.log(`Web server has started and running at ${httpURL}`);
 const stopPrompt = "Type Stop to shutdown server: ";
 process.stdout.write(stopPrompt);
 
+// Start and Stop server upon request
 process.stdin.on("readable", function(){
     let input = process.stdin.read();
     if(input !== null) {
@@ -28,7 +30,6 @@ process.stdin.on("readable", function(){
             console.log("Invalid command.");
         }
         process.stdout.write(stopPrompt);
-        //keep asking user until vaiid input
         process.stdin.resume();
 
     }
@@ -40,7 +41,7 @@ process.stdin.on("readable", function(){
 */
 const databaseAndCollection = {db: "WeatherApp", collection: "searchHistory"};
 const {MongoClient, ServerApiVersion} = require('mongodb');
-const uri = `mongodb+srv://tanwinston217:abcde@cluster0.idenr0n.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `URI`;  // REMOVED URI
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
@@ -102,7 +103,7 @@ app.get('/history', async (request, response) => {
 app.post("/weather", async (request, response) => {
     const {city} = request.body;
 
-    apiKey = "aae9691330278bb23497a702fe05bc37";
+    apiKey = "KEY";     // REMOVED KEY
     let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
     fetch(
         apiLink
@@ -152,6 +153,7 @@ async function addData(info){
     }
 }
 
+// Helper to addData
 async function insertInfo(client, databaseAndCollection, info){
     const result = await client.db(databaseAndCollection.db)
     .collection(databaseAndCollection.collection)
