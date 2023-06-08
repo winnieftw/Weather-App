@@ -15,9 +15,9 @@ Enter a name of the city and it will return back infomration regarding it!
 wind speeds, and more.
 
 ### History/Favorites(GET)
-app.get("/history",...)<br>
-Displays cards of the recent search history. <br>
-Each card has displays the city, high and low temperatures, and an icon regarding the conditions.
+- app.get("/history",...)
+- Displays cards of the recent search history. 
+- Each card has displays the city, high and low temperatures, and an icon regarding the conditions.
 
 ### NOTE
 - There are some limitations to this application.
