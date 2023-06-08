@@ -11,7 +11,7 @@ Enter a name of the city and it will return back infomration regarding it!
 ### Search Results(POST)
 - app.post("/weather",...)
 - Displays a card regarding the weather information of the city.
-- Returns infomration regarding the high temperature, low temperature, description about the conditions,
+- Returns information regarding the high temperature, low temperature, description about the conditions,
 wind speeds, and more.
 
 ### History/Favorites(GET)
