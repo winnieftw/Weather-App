@@ -8,7 +8,6 @@ app.get("/", ...)<br>
 Uses a GET request to display the home page. <br>
 It displays the search bar, search button, and favorites button.
 
-<br><br>
 ### Search Results(POST)
 app.get("/weather",...)<br>
 Displays a card regarding the weather information of the city.<br>
