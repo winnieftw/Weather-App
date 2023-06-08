@@ -60,7 +60,6 @@ app.get("/", (request, response) =>{
 
     const variables = {httpURL: `http://localhost:${portNum}/weather`};
     response.render("weather", variables);
-    // response.render("index");
 });
 
 app.get("/weather", (request, response) => {
@@ -71,7 +70,6 @@ app.get("/weather", (request, response) => {
 app.get('/history', async (request, response) => {
     let arr = await retrieveSearches(client, databaseAndCollection);
     
-    // console.log("array lengthhhhh: "+ arr.length + "\n\n");
     //Store html string
     let weatherCard = "";
 
@@ -98,7 +96,6 @@ app.get('/history', async (request, response) => {
         weatherCard += '</div>';
     }
 
-    // console.log("Weather Cards: " + weatherCard + "\n\n");
     response.render("history", {weatherCard});
 });
 
@@ -111,7 +108,6 @@ app.post("/weather", async (request, response) => {
         apiLink
     )
     .then((response) => {
-        // console.log("API Link: " + apiLink);
         if(!response.ok) {
             throw new Error("No weather found.");
         }
@@ -175,7 +171,6 @@ async function retrieveSearches(client, databaseAndCollection){
         .collection(databaseAndCollection.collection)
         .find(filter);
 
-        // console.log("CURRSORRRR: " + cursor +"\n\n");
         const result = await cursor.toArray();
         return result;
     } catch (e) {
