@@ -1,6 +1,6 @@
 # Weather Application
 
-Enter a name of the city and it will return back infomration regarding it! 
+Enter a name of the city and it will return back its weather info! 
 
 ## About the API
 ### Home Page(GET)
@@ -19,6 +19,7 @@ wind speeds, and more.
 - Displays cards of the recent search history. 
 - Each card has displays the city, high and low temperatures, and an icon regarding the conditions.
 
+### Weather API Link: https://openweathermap.org/api
 ### NOTE
 - There are some limitations to this application.
 - If you're curious about the limitations, feel free to ask.
