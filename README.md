@@ -24,5 +24,4 @@ wind speeds, and more.
 - There are some limitations to this application.
 - If you're curious about the limitations, feel free to ask.
 
-- Hello thomas
 
